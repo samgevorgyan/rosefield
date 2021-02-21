@@ -1,0 +1,80 @@
+@import "../../../../variable";
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  .sidenav-container {
+    width: 1280px;
+    margin: auto;
+    background: 0 0;
+
+    @include for-size(lgm) {
+      width: 1200px;
+    }
+    @include for-size(md) {
+      width: 900px;
+    }
+    @include for-size(sm) {
+      width: 600px;
+    }
+    @include for-size(lt-sm) {
+      width: 100%;
+    }
+  }
+
+  .sidenav {
+    width: 200px;
+  }
+
+  mat-toolbar {
+    height: 100%;
+    background: 0 0;
+    padding: 20px 0;
+    position: relative;
+    color: white;
+
+    .logo_part {
+      cursor: pointer;
+      img {
+        width: 75px;
+      }
+    }
+
+    .links_part {
+      color: white;
+      ul {
+        li {
+          cursor: pointer;
+        }
+      }
+      .language_part {
+        cursor: pointer;
+        text-transform: capitalize;
+      }
+    }
+  }
+}
+
+::ng-deep .mat-menu-panel {
+  min-width: auto !important;
+  min-height: auto !important;
+  color: $main_gold_color;
+  .mat-menu-content:not(:empty) {
+    padding: 0 !important;
+
+    .language_list_div {
+      padding: 7px;
+      cursor: pointer;
+
+      img {
+        width: 25px;
+        margin-right: 10px;
+      }
+
+      .lang_text {
+        text-transform: capitalize;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "rosefield-d39e4"
+  },
+  "targets": {
+    "rosefield-d39e4": {
+      "hosting": {
+        "rosefield": [
+          "rosefield-d39e4"
+        ]
+      }
+    }
+  }
+}

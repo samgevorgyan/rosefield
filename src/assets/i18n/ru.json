@@ -1,0 +1,21 @@
+{
+  "HEADER": {
+    "LANGUAGE_SHOW": "Ru",
+    "ABOUT_US": "О нас",
+    "MANUAL": "Руководство",
+    "ROSE": "Рози",
+    "PARTNERS": "Партнеры",
+    "CHECKOUT": "Оформить заказ",
+    "CONTACTS": "Контакты"
+  },
+  "HOME": {
+
+  },
+  "FOOTER": {
+    "CONTACT": "Contact",
+    "EMAIL": "Email:"
+  },
+  "COMMON": {
+
+  }
+}

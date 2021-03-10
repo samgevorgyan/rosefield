@@ -3,23 +3,24 @@ import { TranslateService } from '@ngx-translate/core';
 import { isPlatformBrowser } from '@angular/common';
 import { LanguageService } from './shared/services/language.service';
 import {
-  ActivatedRoute,
   NavigationEnd,
   Router,
   RouterEvent,
-  UrlSegment,
+  RouterOutlet,
 } from '@angular/router';
-import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { filter } from 'rxjs/operators';
+import { fadeInAnimation } from './animations/fade-in.animation';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [fadeInAnimation],
 })
 export class AppComponent implements OnInit {
   title = 'home';
   isAdmin = false;
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: object,
     private translate: TranslateService,
@@ -43,5 +44,13 @@ export class AppComponent implements OnInit {
         lang.includes('ru') || lang.includes('am') ? lang : 'am'
       );
     }
+  }
+
+  prepareRoute(outlet: RouterOutlet): string {
+    return (
+      outlet &&
+      outlet.activatedRouteData &&
+      outlet.activatedRouteData.animationState
+    );
   }
 }

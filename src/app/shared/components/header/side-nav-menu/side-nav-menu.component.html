@@ -1,74 +1,72 @@
-<mat-toolbar fxLayout="column" fxLayoutAlign="space-between center">
-</mat-toolbar>
-
-<div
-  class="menu_side"
-  fxLayout="column"
-  fxLayoutAlign="center start"
-  fxLayoutGap="20px"
->
-  <div
-    class="configuration"
-    fxLayout="row"
-    fxLayoutAlign="start center"
-    fxLayoutGap="10px"
-    (click)="openConfigMenu()"
-  >
-    <span>configuration</span>
-    <!--    <img-->
-    <!--      [src]="'assets/img/flags/' + (languageFromUrl$ | async) + '.png'"-->
-    <!--      alt="flag"-->
-    <!--    />-->
-    <!--    <fa-icon iocn="right"></fa-icon>-->
+<div class="menu_side">
+  <div class="logo_part" (click)="navigateByUrl('home')">
+    <img src="./assets/images/header/logo.svg" alt="rose Field logo " />
   </div>
 
-  <div class="sign_out">sign Out</div>
-
-  <!--  configuration part-->
-
-  <div
-    class="config_menu"
-    *ngIf="showConfigMenu"
-    fxLayout="column"
-    fxLayoutAlign="start start"
-    fxLayoutGap="20px"
-  >
-    <!--    <fa-icon iocn="right"></fa-icon>-->
-    <div (click)="openLanguageList()" class="select_lang_div">
-      <div class="lang_arrow" fxLayout="row" fxLayoutAlign="start center">
-        <span>language</span>
-        <!--        <fa-icon iocn="right"></fa-icon>-->
-        <!--        <fa-icon iocn="right"></fa-icon>-->
-      </div>
-
-      <div
-        class="language_list"
-        fxLayout="column"
-        fxLayoutGap="5px"
-        *ngIf="showLanguageList"
-      >
+  <ul fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px">
+    <li>
+      <div class="select_lang_div">
         <div
-          class="lang_curr_div"
-          [ngClass]="{ selected_language: lang.selected }"
-          *ngFor="let lang of languageList"
+          (click)="openLanguageList()"
+          fxLayout="row"
+          fxLayoutAlign="center center"
         >
-          <span
-            [title]="lang.name"
-            (click)="changeLanguage(lang.name)"
-            fxLayout="row"
-            fxLayoutAlign="start center "
-          >
-            <!--            <img-->
-            <!--              [src]="'assets/img/flags/' + lang.flag + '.png'"-->
-            <!--              alt="flag"-->
-            <!--              [title]="lang.name"-->
-            <!--            />-->
-            <span class="lang_text">{{ lang.name }}</span>
+          {{ "HEADER.LANGUAGE_SHOW" | translate }}
+
+          <span>
+            <img
+              *ngIf="!showLanguageList"
+              src="./assets/images/icons/down.svg"
+              alt="rose field down"
+            />
+            <img
+              *ngIf="showLanguageList"
+              src="./assets/images/icons/up.svg"
+              alt="rose field up"
+            />
           </span>
         </div>
+        <div
+          class="language_list"
+          fxLayout="column"
+          fxLayoutGap="5px"
+          *ngIf="showLanguageList"
+        >
+          <div
+            class="lang_curr_div"
+            [ngClass]="{ selected_language: lang.selected }"
+            *ngFor="let lang of languageList"
+          >
+            <span
+              [title]="lang.name"
+              (click)="changeLanguage(lang.name)"
+              fxLayout="row"
+              fxLayoutAlign="start center "
+            >
+              <span class="lang_text">{{ lang.showName }}</span>
+            </span>
+          </div>
+        </div>
       </div>
-    </div>
+    </li>
 
-    <div class="notifications">Notifications</div>
-  </div>
+    <li [routerLink]="['/about' | localize]" routerLinkActive="active_black">
+      {{ "HEADER.ABOUT_US" | translate }}
+    </li>
+    <li [routerLink]="['/ceo' | localize]" routerLinkActive="active_black">
+      {{ "HEADER.MANUAL" | translate }}
+    </li>
+    <li [routerLink]="['/roses' | localize]" routerLinkActive="active_black">
+      {{ "HEADER.ROSE" | translate }}
+    </li>
+    <li [routerLink]="['/partners' | localize]" routerLinkActive="active_black">
+      {{ "HEADER.PARTNERS" | translate }}
+    </li>
+    <li [routerLink]="['/checkout' | localize]" routerLinkActive="active_black">
+      {{ "HEADER.CHECKOUT" | translate }}
+    </li>
+    <li [routerLink]="['/contacts' | localize]" routerLinkActive="active_black">
+      {{ "HEADER.CONTACTS" | translate }}
+    </li>
+  </ul>
 </div>

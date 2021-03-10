@@ -1,0 +1,23 @@
+@import "../../../variable.scss";
+.partners_main_container {
+  background-image: url("../../../assets/images/partners/partner_background.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  padding-top: 100px;
+  .partners_text {
+    max-width: 1200px;
+    width: 100%;
+    .text {
+      color: white;
+      width: 400px;
+      font-size: 20px;
+      padding: 20px;
+      background-color: #ffffff24;
+      ul {
+        list-style: circle;
+      }
+    }
+  }
+}

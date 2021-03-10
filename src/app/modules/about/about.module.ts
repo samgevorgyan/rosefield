@@ -12,7 +12,9 @@ export const routes: Routes = [{ path: '', component: AboutComponent }];
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    TranslateModule.forChild(),
+    TranslateModule.forChild({
+      extend: true,
+    }),
     ShareModule,
   ],
 })

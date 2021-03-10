@@ -35,18 +35,55 @@ $rosefield-theme: mat-light-theme(
 @include angular-material-theme($rosefield-theme);
 
 /* You can add global styles to this file, and also import other style files */
-
+@font-face {
+  font-family: "bebasneue-webfont-arm";
+  src: url("./assets/fonts/bebasneue-webfont-arm.ttf");
+}
+@font-face {
+  font-family: "AkayaTelivigala-Regular";
+  src: url("./assets/fonts/AkayaTelivigala-Regular.ttf");
+}
+@font-face {
+  font-family: "BebasNeue-Regular";
+  src: url("./assets/fonts/BebasNeue-Regular.ttf");
+}
 html,
 body {
   height: 100%;
+  text-transform: none;
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "bebasneue-webfont-arm", sans-serif;
 }
 * {
   outline: none;
 }
 ul {
   list-style: none;
+}
+
+.mat-toolbar,
+.mat-toolbar h1,
+.mat-toolbar h2,
+.mat-toolbar h3,
+.mat-toolbar h4,
+.mat-toolbar h5,
+.mat-toolbar h6 {
+  font: 500 20px/32px "bebasneue-webfont-arm", sans-serif;
+}
+.brightness {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.31);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.active_black {
+  border-bottom: 1px solid black;
+}
+.mat-drawer-backdrop {
+  position: fixed !important;
+  opacity: 0.2;
 }

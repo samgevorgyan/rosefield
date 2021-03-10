@@ -1,9 +1,17 @@
 import { LanguageService } from 'src/app/shared/services/language.service';
 
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { languageList } from 'src/app/utils/language.list';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav-menu',
@@ -11,30 +19,28 @@ import { Observable } from 'rxjs';
   styleUrls: ['./side-nav-menu.component.scss'],
 })
 export class SideNavMenuComponent implements OnInit {
-  languageFromUrl$ = this.languageService.languageFromUrl$;
-
-  showConfigMenu = false;
   showLanguageList = false;
   languageList = languageList;
 
   constructor(
     private languageService: LanguageService,
-    private translate: TranslateService
+    private localize: LocalizeRouterService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {}
 
-  openConfigMenu(): void {
-    this.showConfigMenu = !this.showConfigMenu;
+  navigateByUrl(url: string): void {
+    const urlToNavigate: any = this.localize.translateRoute(url);
+    this.router.navigate([urlToNavigate]);
+  }
+  changeLanguage(lang: string): void {
+    this.languageService.changeLanguage(lang);
+    this.languageService.emitLanguageChange(lang);
+    this.showLanguageList = !this.showLanguageList;
   }
 
   openLanguageList(): void {
     this.showLanguageList = !this.showLanguageList;
-  }
-
-  changeLanguage(lang: string): void {
-    this.translate.use(lang);
-    this.languageService.changeLanguage(lang);
-    this.languageService.emitLanguageChange(lang);
   }
 }

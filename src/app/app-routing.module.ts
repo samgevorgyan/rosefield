@@ -41,7 +41,7 @@ export function createTranslateLoaderRouter(
     }),
   ],
 
-  exports: [RouterModule],
+  exports: [RouterModule, LocalizeRouterModule],
 })
 export class AppRoutingModule {
   constructor() {}

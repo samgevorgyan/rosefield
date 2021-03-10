@@ -1,0 +1,43 @@
+@import "../../../variable.scss";
+.contacts_main_container {
+  background-image: url("../../../assets/images/contact/contact_background.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  padding-top: 100px;
+
+  .contacts_section {
+    .contacts_first_section {
+      width: 515px;
+      height: 435px;
+      border-radius: 32px;
+      border: 8px solid white;
+      font-size: 50px;
+      color: white;
+      text-transform: capitalize;
+    }
+    .contacts_icons_section {
+      width: 170px;
+      height: 435px;
+      border-radius: 32px;
+      border: 8px solid white;
+      padding: 10px;
+      margin: 0 10px;
+      img {
+        width: 82px;
+        height: 82px;
+      }
+    }
+    .contacts_text_section {
+      height: 435px;
+      div {
+        height: 82px;
+        span {
+          color: white;
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}

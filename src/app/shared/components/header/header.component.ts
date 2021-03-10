@@ -10,7 +10,13 @@ import {
   LocalizedRouter,
   LocalizeRouterService,
 } from '@gilsdav/ngx-translate-router';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  NavigationStart,
+  Route,
+  Router,
+} from '@angular/router';
 
 @Component({
   selector: 'app-main-header',
@@ -20,9 +26,10 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   languageList = languageList;
   languageFromUrl$ = this.languageService.languageFromUrl$;
-  isMenuOpend = false;
+  isMenuOpened = false;
+  isContactPage = false;
   isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.XSmall)
+    .observe('(max-width: 959px)')
     .pipe(
       tap(console.log),
       map((result) => result.matches),
@@ -41,8 +48,15 @@ export class HeaderComponent implements OnInit {
     this.languageFromUrl$.subscribe((lang: string) => {
       this.setSelectedLanguage(lang);
     });
+
+    this.router.events.subscribe((event: any) => {
+      if (event instanceof NavigationEnd || event instanceof NavigationStart) {
+        this.isContactPage = event.url.includes('contact');
+      }
+    });
   }
-  NavigateByUrl(url: string): void {
+
+  navigateByUrl(url: string): void {
     const urlToNavigate: any = this.localize.translateRoute(url);
     this.router.navigate([urlToNavigate]);
   }

@@ -13,56 +13,111 @@
     </mat-sidenav>
     <mat-sidenav-content>
       <mat-toolbar>
-        <div class="logo_part" [routerLink]="['/home' | localize]">
-          <img src="../../../../assets/images/header/logo.svg" />
-        </div>
+        <img
+          class="menu_trigger"
+          *ngIf="isHandset$ | async"
+          (click)="drawer.toggle()"
+          src="./assets/images/icons/menu.svg"
+          alt="rose field menu"
+        />
 
-        <div
-          class="links_part"
-          fxLayout="row"
-          fxLayoutAlign="space-between center"
-          fxFlex
-        >
-          <ul fxLayout="row" fxLayoutAlign="space-evenly center" fxFlex>
-            <li [routerLink]="['/about' | localize]">
+        <div *ngIf="isHandset$ | async" class="logo_part_small logo_part">
+          <img
+            (click)="navigateByUrl('home')"
+            src="../../../../assets/images/header/logo.svg"
+            alt="rose Field logo "
+          />
+        </div>
+        <div *ngIf="!(isHandset$ | async)" class="links_part">
+          <ul
+            fxLayout="row"
+            fxLayoutAlign="space-evenly center"
+            fxLayoutAlign.lt-lg="space-evenly center"
+            [ngClass]="{ black: isContactPage }"
+          >
+            <li>
+              <div class="logo_part" (click)="navigateByUrl('home')">
+                <img
+                  src="../../../../assets/images/header/logo.svg"
+                  alt="rose Field logo "
+                />
+              </div>
+            </li>
+            <li [routerLink]="['/about' | localize]" routerLinkActive="active">
               {{ "HEADER.ABOUT_US" | translate }}
             </li>
-            <li>{{ "HEADER.MANUAL" | translate }}</li>
-            <li>{{ "HEADER.ROSE" | translate }}</li>
-            <li>{{ "HEADER.PARTNERS" | translate }}</li>
-            <li>{{ "HEADER.CHECKOUT" | translate }}</li>
-            <li>{{ "HEADER.CONTACTS" | translate }}</li>
-          </ul>
-          <div
-            class="language_part"
-            [matMenuTriggerFor]="LanguageMenu"
-            (menuClosed)="isMenuOpend = false"
-            (menuOpened)="isMenuOpend = true"
-            fxLayout="row"
-            fxLayoutAlign="space-between center"
-          >
-            {{ "HEADER.LANGUAGE_SHOW" | translate }}
+            <li [routerLink]="['/ceo' | localize]" routerLinkActive="active">
+              {{ "HEADER.MANUAL" | translate }}
+            </li>
+            <li [routerLink]="['/roses' | localize]" routerLinkActive="active">
+              {{ "HEADER.ROSE" | translate }}
+            </li>
+            <li
+              [routerLink]="['/partners' | localize]"
+              routerLinkActive="active"
+            >
+              {{ "HEADER.PARTNERS" | translate }}
+            </li>
+            <li
+              [routerLink]="['/checkout' | localize]"
+              routerLinkActive="active"
+            >
+              {{ "HEADER.CHECKOUT" | translate }}
+            </li>
+            <li
+              [routerLink]="['/contacts' | localize]"
+              routerLinkActive="active_black"
+            >
+              {{ "HEADER.CONTACTS" | translate }}
+            </li>
 
-            <!--            <fa-icon icon="angle-down" *ngIf="!isMenuOpend"></fa-icon>-->
-            <!--            <fa-icon icon="angle-up" *ngIf="isMenuOpend"></fa-icon>-->
-
-            <mat-menu #LanguageMenu="matMenu">
+            <li>
               <div
-                class="language_list_div"
-                [ngClass]="{ selected_language: lang.selected }"
-                *ngFor="let lang of languageList"
+                class="language_part"
+                [matMenuTriggerFor]="LanguageMenu"
+                (menuClosed)="isMenuOpened = false"
+                (menuOpened)="isMenuOpened = true"
+                fxLayout="row"
+                fxLayoutAlign="space-between center"
               >
-                <span
-                  [title]="lang.name"
-                  (click)="changeLanguage(lang.name)"
-                  fxLayout="row"
-                  fxLayoutAlign="start center "
-                >
-                  <span class="lang_text">{{ lang.showName }}</span>
-                </span>
+                {{ "HEADER.LANGUAGE_SHOW" | translate }}
+
+                <img
+                  [ngStyle]="{
+                    filter: isContactPage ? 'invert(0)' : 'invert(1)'
+                  }"
+                  *ngIf="!isMenuOpened"
+                  src="./assets/images/icons/down.svg"
+                  alt="rose field down"
+                />
+                <img
+                  [ngStyle]="{
+                    filter: isContactPage ? 'invert(0)' : 'invert(1)'
+                  }"
+                  *ngIf="isMenuOpened"
+                  src="./assets/images/icons/up.svg"
+                  alt="rose field up"
+                />
+
+                <mat-menu #LanguageMenu="matMenu">
+                  <div
+                    class="language_list_div"
+                    [ngClass]="{ selected_language: lang.selected }"
+                    *ngFor="let lang of languageList"
+                  >
+                    <span
+                      [title]="lang.name"
+                      (click)="changeLanguage(lang.name)"
+                      fxLayout="row"
+                      fxLayoutAlign="start center "
+                    >
+                      <span class="lang_text">{{ lang.showName }}</span>
+                    </span>
+                  </div>
+                </mat-menu>
               </div>
-            </mat-menu>
-          </div>
+            </li>
+          </ul>
         </div>
       </mat-toolbar>
     </mat-sidenav-content>

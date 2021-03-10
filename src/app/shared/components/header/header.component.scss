@@ -4,21 +4,13 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 1;
   .sidenav-container {
     width: 1280px;
     margin: auto;
     background: 0 0;
 
-    @include for-size(lgm) {
-      width: 1200px;
-    }
-    @include for-size(md) {
-      width: 900px;
-    }
-    @include for-size(sm) {
-      width: 600px;
-    }
-    @include for-size(lt-sm) {
+    @include for-size(lt-lg) {
       width: 100%;
     }
   }
@@ -33,7 +25,16 @@ header {
     padding: 20px 0;
     position: relative;
     color: white;
-
+    .menu_trigger {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      z-index: 10;
+    }
+    .logo_part_small {
+      width: 100%;
+      text-align: center;
+    }
     .logo_part {
       cursor: pointer;
       img {
@@ -43,6 +44,17 @@ header {
 
     .links_part {
       color: white;
+      width: 100%;
+
+      .active {
+        border-bottom: 1px solid white;
+      }
+
+      .black {
+        li {
+          color: black;
+        }
+      }
       ul {
         li {
           cursor: pointer;
@@ -51,6 +63,9 @@ header {
       .language_part {
         cursor: pointer;
         text-transform: capitalize;
+        img {
+          filter: invert(1);
+        }
       }
     }
   }

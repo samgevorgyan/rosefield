@@ -1,0 +1,21 @@
+@import "../../../variable.scss";
+.roses_main_container {
+  background-image: url("../../../assets/images/roses/roses_background.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  padding-top: 100px;
+
+  .roses_text {
+    max-width: 1200px;
+    width: 100%;
+    .text {
+      color: white;
+      width: 300px;
+      font-size: 20px;
+      padding: 20px;
+      background-color: #ffffff24;
+    }
+  }
+}

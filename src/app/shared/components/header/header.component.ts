@@ -31,7 +31,6 @@ export class HeaderComponent implements OnInit {
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe('(max-width: 959px)')
     .pipe(
-      tap(console.log),
       map((result) => result.matches),
       shareReplay()
     );

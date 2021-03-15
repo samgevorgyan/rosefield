@@ -3,7 +3,12 @@
   fxLayout="row"
   fxLayoutAlign="center center"
 >
-  <div class="contacts_section" fxLayout="row" fxLayoutAlign="center center">
+  <div
+    class="contacts_section"
+    fxLayout="row"
+    fxLayout.lt-md="column"
+    fxLayoutAlign="center center"
+  >
     <div
       class="contacts_first_section"
       fxLayout="row"
@@ -11,39 +16,41 @@
     >
       {{ "CONTACTS.CONTACT_US" | translate }}
     </div>
-    <div
-      class="contacts_icons_section"
-      fxLayout="column"
-      fxLayoutAlign="space-evenly center"
-    >
-      <img
-        src="../../../assets/images/contact/phone.svg"
-        alt="rosefield phone"
-      />
-      <img
-        src="../../../assets/images/contact/mail.svg"
-        alt="rosefield email"
-      />
-      <img
-        src="../../../assets/images/contact/world.svg"
-        alt="rosefield web site"
-      />
-    </div>
-    <div
-      class="contacts_text_section"
-      fxLayout="column"
-      fxLayoutAlign="space-evenly center"
-    >
-      <div fxLayout="column" fxLayoutAlign="space-evenly center">
-        <span>{{ "CONTACTS.PHONE_NUMBER" | translate }}</span>
-        <span>{{ "CONTACTS.PHONE_VIBER_WHATSAPP" | translate }}</span>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <div
+        class="contacts_icons_section"
+        fxLayout="column"
+        fxLayoutAlign="space-evenly center"
+      >
+        <img
+          src="../../../assets/images/contact/phone.svg"
+          alt="rosefield phone"
+        />
+        <img
+          src="../../../assets/images/contact/mail.svg"
+          alt="rosefield email"
+        />
+        <img
+          src="../../../assets/images/contact/world.svg"
+          alt="rosefield web site"
+        />
       </div>
-      <div fxLayout="column" fxLayoutAlign="space-evenly center">
-        <span [innerHTML]="'CONTACTS.EMAIL' | translate"> </span>
-      </div>
+      <div
+        class="contacts_text_section"
+        fxLayout="column"
+        fxLayoutAlign="space-evenly center"
+      >
+        <div fxLayout="column" fxLayoutAlign="space-evenly center">
+          <span>{{ "CONTACTS.PHONE_NUMBER" | translate }}</span>
+          <span>{{ "CONTACTS.PHONE_VIBER_WHATSAPP" | translate }}</span>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="space-evenly center">
+          <span [innerHTML]="'CONTACTS.EMAIL' | translate"> </span>
+        </div>
 
-      <div fxLayout="column" fxLayoutAlign="space-evenly center">
-        <span [innerHTML]="'CONTACTS.ADDRESS' | translate"></span>
+        <div fxLayout="column" fxLayoutAlign="space-evenly center">
+          <span [innerHTML]="'CONTACTS.ADDRESS' | translate"></span>
+        </div>
       </div>
     </div>
   </div>

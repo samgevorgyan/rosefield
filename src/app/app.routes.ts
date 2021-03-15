@@ -40,7 +40,7 @@ export const routes: Routes = [
       import('./modules/checkout/checkout.module').then(
         (mod) => mod.CheckoutModule
       ),
-    data: { animationState: 'checkout' },
+    data: { animationState: 'contacts' },
   },
   {
     path: 'contacts',

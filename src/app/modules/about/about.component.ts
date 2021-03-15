@@ -21,10 +21,25 @@ export class AboutComponent implements OnInit {
   }
 
   setTitleMeta(): void {
-    this.titleService.setTitle('Jungle Sweets home');
-    this.metaService.addTag({
-      name: 'og:url',
-      content: 'https://www.rosefield.am/am/home',
-    });
+    this.titleService.setTitle('RoseField about');
+    this.metaService.addTags([
+      {
+        name: 'og:url',
+        content: 'https://www.rosefield.am/ru/about',
+      },
+      {
+        name: 'og:type',
+        content: 'article',
+      },
+      {
+        name: 'og:title',
+        content: 'WELCOME TO ROSEFIELD ',
+      },
+      {
+        name: 'og:image',
+        content:
+          'https://rosefield.am/roses_background.8825175e0dfb71d6a5c7.svg',
+      },
+    ]);
   }
 }

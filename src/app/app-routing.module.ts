@@ -5,7 +5,7 @@ import {
   LocalizeRouterSettings,
 } from '@gilsdav/ngx-translate-router';
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import { routes } from './app.routes';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loader';
@@ -31,7 +31,9 @@ export function createTranslateLoaderRouter(
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, {
+      preloadingStrategy: PreloadAllModules,
+    }),
     LocalizeRouterModule.forRoot(routes, {
       parser: {
         provide: LocalizeParser,

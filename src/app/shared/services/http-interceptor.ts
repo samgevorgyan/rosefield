@@ -27,11 +27,8 @@ export class HttpMainInterceptor implements HttpInterceptor {
       },
     });
     return next.handle(request).pipe(
-      tap((res) => {
-        console.log('from http interceptor');
-      }),
+      tap((res) => {}),
       catchError((error) => {
-        console.log('error from interceptr', error);
         return throwError(error);
       })
     );

@@ -1,6 +1,14 @@
-import {AfterViewChecked, Component, ElementRef, ViewChild,} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {Meta, Title} from '@angular/platform-browser';
+import {
+  AfterViewChecked,
+  Component,
+  ElementRef,
+  Inject,
+  PLATFORM_ID,
+  ViewChild,
+} from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-home',
@@ -14,15 +22,17 @@ export class HomeComponent implements AfterViewChecked {
     private router: Router,
     private route: ActivatedRoute,
     private titleService: Title,
-    private metaService: Meta
-  ) {
-  }
+    private metaService: Meta,
+    @Inject(PLATFORM_ID) private platformId: object
+  ) {}
 
   ngAfterViewChecked(): void {
     this.setTitleMeta();
-    if (this.video) {
-      this.video.nativeElement.muted = true;
-      this.video.nativeElement.play();
+    if (isPlatformBrowser(this.platformId)) {
+      if (this.video) {
+        this.video.nativeElement.muted = true;
+        this.video.nativeElement.play();
+      }
     }
   }
 
